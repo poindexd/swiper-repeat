@@ -1,6 +1,6 @@
 'use strict';
 
-var Touch = function() {
+var Touch = function(options) {
 
   var initialOffset, 
       touchStart, 
@@ -95,7 +95,7 @@ var Touch = function() {
       var offset = (-touchDelta.x / containerWidth) + initialOffset;
 
       var isSlide = (Math.abs(offset) > 0.5) ||
-                          ((event.timeStamp || +new Date()) - touchStart.time < 250 && Math.abs(touchDelta.x) > 20);
+                          ((event.timeStamp || +new Date()) - touchStart.time < options.duration && Math.abs(touchDelta.x) > 20);
 
       var item, transition;
       if(isSlide && offset < 0 && this.slides.left) {

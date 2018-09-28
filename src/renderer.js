@@ -1,7 +1,8 @@
 'use strict';
 
-var Renderer = function(retranslatorFn) {
+var Renderer = function(options) {
 
+  var retranslatorFn = options.retranslatorFn;
   var onTransitionEnd, isInTransition;
 
   return {
@@ -21,7 +22,7 @@ var Renderer = function(retranslatorFn) {
     },
 
     transition: function(offset, callback) {
-      this.translate(offset, 250, callback);
+      this.translate(offset, options.duration, callback);
     },
 
     isInTransition: function() {

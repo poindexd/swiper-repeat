@@ -9,7 +9,8 @@ angular.module('swiperRepeat', ['ng'])
       stopPropagation: false,
       prerender: false,
       retranslator: null,
-      disableTouch: false
+      disableTouch: false,
+      duration: 250
     };
 
     return {
@@ -84,9 +85,9 @@ angular.module('swiperRepeat', ['ng'])
         angular.extend(swiper, 
           Polyfill(), 
           Container(container), 
-          Renderer(options.retranslator),
+          Renderer(options),
           State(select),
-          Touch(),
+          Touch(options),
           Api(),
           options.prerender ? RendererFull(slideFactory) : RendererPart(slideFactory)
         );
